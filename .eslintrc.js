@@ -20,7 +20,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "no-param-reassign": ["error", {
         "props": true,
-        "ignorePropertyModificationsFor": ["user"]
+        "ignorePropertyModificationsFor": ["user", "req"]
       }],
     "camelcase": "off",
     "no-unused-vars": ["error", {"argsIgnorePattern": "next"}]
