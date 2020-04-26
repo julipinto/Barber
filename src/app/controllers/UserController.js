@@ -38,20 +38,16 @@ class UserController {
             ),
         });
 
-        try {
-            await schema
-                .validate(req.body, { abortEarly: false })
-                .catch((errors) => {
-                    errors.inner.map((err) => {
-                        return res.json({
-                            field: err.path,
-                            message: err.message,
-                        });
+        await schema
+            .validate(req.body, { abortEarly: false })
+            .catch((errors) => {
+                errors.inner.map((err) => {
+                    return res.status(400).json({
+                        field: err.path,
+                        message: err.message,
                     });
                 });
-        } catch (error) {
-            // next();
-        }
+            });
 
         /*
         if (!(await schema.isValid(req.body))) {
